@@ -8,7 +8,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
-
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
 if has("nvim")
   Plug 'nvim-lua/completion-nvim'
   Plug 'hoob3rt/lualine.nvim'
@@ -21,7 +23,6 @@ if has("nvim")
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/nvim-cmp'
-  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'onsails/lspkind-nvim'
   Plug 'nvim-lua/popup.nvim'
@@ -29,6 +30,7 @@ if has("nvim")
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'L3MON4D3/LuaSnip'
+  Plug 'nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' }
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
