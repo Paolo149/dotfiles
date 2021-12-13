@@ -15,7 +15,11 @@ alias la "ls -A"
 alias ll "exa -l -g --icons"
 alias llt "ll --tree --level=2 -a"
 alias lla "ll -a"
+alias clock "tty-clock"
+alias c "clear"
+alias neofetch "neofetch | lolcat"
 alias g git
+alias ide "sh ~/.config/scripts/ide.sh"
 command -qv nvim && alias vim nvim
 
 set -gx EDITOR nvim

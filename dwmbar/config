@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# What modules, in what order
+MODULES="wifi time date battery"
+
+# Modules that require an active internet connection
+ONLINE_MODULES=""
+
+# Delay between showing the status bar
+DELAY="0.05"
+
+# Where the custom modules are stored
+CUSTOM_DIR="/home/$USER/.config/dwmbar/modules/custom/"
+
+# Separator between modules
+SEPARATOR=" | "
+
+# Padding at the end and beggining of the status bar
+RIGHT_PADDING=" "
+LEFT_PADDING=" "
