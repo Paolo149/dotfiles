@@ -10,7 +10,6 @@ if !1 | finish | endif
 
 set nocompatible
 set number
-syntax enable
 set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
 set title
@@ -23,6 +22,7 @@ set cmdheight=1
 set laststatus=2
 set scrolloff=10
 set expandtab
+set relativenumber
 "let loaded_matchparen = 1
 set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
@@ -120,27 +120,31 @@ runtime ./maps.vim
 " ---------------------------------------------------------------------
 
 " true color
-if exists("&termguicolors") && exists("&winblend")
-  syntax enable
-  set termguicolors
-  set winblend=0
-  set wildoptions=pum
-  set pumblend=5
-  set background=dark
-  " Use NeoSolarized
-  let g:gruvbox_termtrans=1
-  runtime ./colors/gruvbox.vim
-  colorscheme gruvbox
-endif
-
+syntax enable
+set termguicolors
+set winblend=0
+set wildoptions=pum
+set pumblend=5
+set background=dark
+" Use gruvbox
+let g:gruvbox_termtrans=1
+runtime ./colors/gruvbox.vim
+colorscheme gruvbox
 "}}}
 
-" Extras "{{{
+"  Extras "{{{
 " ---------------------------------------------------------------------
+set nohlsearch
 set exrc
+"let g:deoplete#enable_at_startup = 1
 "}}}
 
-" LaTex "{{{
+" Picom {{{
 " ---------------------------------------------------------------------
-"}}}
+if system('pgrep -x picom > /dev/null && echo 1 || echo 0') == 1
+	highlight Normal guibg=NONE
+else
+	highlight Normal guibg=#282A36
+endif
+" }}}
 " vim: set foldmethod=marker foldlevel=0:

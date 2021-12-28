@@ -3,17 +3,20 @@ if has("nvim")
 endif
 
 call plug#begin()
-
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'alvan/vim-closetag'
-Plug 'tpope/vim-surround'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'mattn/emmet-vim'
 if has("nvim")
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'morhetz/gruvbox'
+  Plug 'lervag/vimtex'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
+  Plug 'alvan/vim-closetag'
+  Plug 'tpope/vim-surround'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+  Plug 'mattn/emmet-vim'
   Plug 'nvim-lua/completion-nvim'
-  Plug 'hoob3rt/lualine.nvim'
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }

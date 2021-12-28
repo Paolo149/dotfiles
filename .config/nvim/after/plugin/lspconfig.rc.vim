@@ -84,22 +84,19 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-nvim_lsp.texlab.setup {
-  on_attach,
-  filetypes = { "plaintex" },
-  capabilities = capabilities
-}
-
-
 --nvim_lsp.flow.setup {
   --on_attach = on_attach,
   --filetypes = { "javascript", "javascriptreact", "javascript.jsx" },
   --capabilities = capabilities
 --}
 
-nvim_lsp.html.setup {
+nvim_lsp.pyright.setup {
   on_attach = on_attach,
-  filetypes = { "html", "css" },
+  capabilities = capabilities
+}
+
+nvim_lsp.ccls.setup {
+  on_attach = on_attach,
   capabilities = capabilities
 }
 

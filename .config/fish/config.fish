@@ -20,6 +20,8 @@ alias c "clear"
 alias neofetch "neofetch | lolcat"
 alias g git
 alias ide "sh ~/.config/scripts/ide.sh"
+alias factorio "sh ~/Downloads/Torrents/Factorio/run.sh"
+alias matlab "sh ~/Downloads/Torrents/Matlab/bin/matlab -nodesktop"
 command -qv nvim && alias vim nvim
 
 set -gx EDITOR nvim

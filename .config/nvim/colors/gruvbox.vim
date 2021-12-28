@@ -6,6 +6,13 @@
 " Last Modified: 12 Aug 2017
 " -----------------------------------------------------------------------------
 
+" Picom {{{
+if system('pgrep -x picom > /dev/null && echo 1 || echo 0') == 1
+	highlight Normal guibg=NONE
+else
+	highlight Normal guibg=#282A36
+endif
+" }}}
 " Supporting code -------------------------------------------------------------
 " Initialisation: {{{
 
@@ -1414,5 +1421,4 @@ function! GruvboxHlsHideCursor()
 endfunction
 
 " }}}
-
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:

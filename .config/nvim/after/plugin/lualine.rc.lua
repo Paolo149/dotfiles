@@ -4,7 +4,7 @@ if (not status) then return end
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox_dark',
+    theme = 'gruvbox',
     section_separators = {left = '', right = ''},
     component_separators = {left = '', right = ''},
     disabled_filetypes = {}
@@ -37,6 +37,5 @@ lualine.setup {
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
   extensions = {'fugitive'}
 }
