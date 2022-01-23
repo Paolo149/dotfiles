@@ -1,3 +1,9 @@
+"__     ___
+"\ \   / (_)_ __ ___  _ __ ___
+" \ \ / /| | '_ ` _ \| '__/ __|
+"  \ V / | | | | | | | | | (__
+"   \_/  |_|_| |_| |_|_|  \___|
+
 " Fundamentals "{{{
 " ---------------------------------------------------------------------
 
@@ -8,6 +14,7 @@ scriptencoding utf-8
 " stop loading config if it's on tiny or small
 if !1 | finish | endif
 
+set guicursor=
 set nocompatible
 set number
 set fileencodings=utf-8,sjis,euc-jp,latin
@@ -47,8 +54,8 @@ set ignorecase
 set smarttab
 " indents
 filetype plugin indent on
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set ai "Auto indent
 set si "Smart indent
 set nowrap "No Wrap lines
@@ -62,24 +69,26 @@ autocmd InsertLeave * set nopaste
 
 " Add asterisks in block comments
 set formatoptions+=r
+set clipboard+=unnamedplus
 
 "}}}
 
-" Highlights "{{{
+"Highlights "{{{
 " ---------------------------------------------------------------------
-set cursorline
+"set cursorline
 "set cursorcolumn
+set nocursorline
+if has('autocmd')
+    augroup coloroverride
+        autocmd!
+        autocmd ColorScheme * highlight LineNr guifg=#7fa2ac
+    augroup END
+endif
+silent! colorscheme eldar " Custom color scheme
 
 " Set cursor line color on visual mode
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 
-highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
-
-augroup BgHighlight
-  autocmd!
-  autocmd WinEnter * set cul
-  autocmd WinLeave * set nocul
-augroup END
 
 if &term =~ "screen"
   autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
@@ -89,7 +98,7 @@ endif
 "}}}
 
 " File types "{{{
-" ---------------------------------------------------------------------
+" --------------------------------------------------------------------
 " JavaScript
 au BufNewFile,BufRead *.es6 setf javascript
 " TypeScript
@@ -139,12 +148,4 @@ set exrc
 "let g:deoplete#enable_at_startup = 1
 "}}}
 
-" Picom {{{
-" ---------------------------------------------------------------------
-if system('pgrep -x picom > /dev/null && echo 1 || echo 0') == 1
-	highlight Normal guibg=NONE
-else
-	highlight Normal guibg=#282A36
-endif
-" }}}
 " vim: set foldmethod=marker foldlevel=0:
