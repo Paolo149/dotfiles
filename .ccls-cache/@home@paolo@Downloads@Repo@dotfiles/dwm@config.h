@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 /* appearance */
-static const unsigned int borderpx = 2; /* border pixel of windows */
+static const unsigned int borderpx = 3; /* border pixel of windows */
 static const unsigned int gappx = 0;
 static const unsigned int snap = 32; /* snap pixel */
 static const int showbar = 1;        /* 0 means no bar */
@@ -14,19 +14,12 @@ static const char col_whitegray[] = "#fbf1c7";
 static const char col_whitegray2[] = "#fbf1c7";
 static const char col_gray[] = "#32302f";
 static const char col_white[] = "#ebdbb2";
-                                   /* 0xd0 */ 
-static const unsigned int baralpha = OPAQUE;
-static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_whitegray, col_gray, col_black},
     [SchemeSel] = {col_whitegray2, col_black2, col_white},
 };
-static const unsigned int alphas[][3]      = {
-	/*               fg      bg        border     */
-	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
-};
+
 /* tagging */
 static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
@@ -89,7 +82,6 @@ static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0",
 static const char *upbrightness[] = {"/usr/bin/xbacklight", "-inc", "1", NULL};
 static const char *downbrightness[] = {"/usr/bin/xbacklight", "-dec", "1",
                                        NULL};
-static const char *prtscrcmd[] = { "flameshot", "gui", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -127,7 +119,6 @@ static Key keys[] = {
     {0, XF86XK_MonBrightnessUp, spawn, {.v = upbrightness}},
     {0, XF86XK_MonBrightnessDown, spawn, {.v = downbrightness}},
     {0, XK_Print, spawn, {.v = screenshot}},
-    {MODKEY, XK_Print, spawn, {.v = prtscrcmd}},
 };
 
 /* button definitions */

@@ -31,7 +31,7 @@ colors:
 
 window:
   #background opacity
-  opacity: 0.95
+  opacity: 1 
   title: hacking
 
 cursor:

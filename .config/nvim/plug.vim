@@ -10,9 +10,12 @@ if has("nvim")
 endif
 
 call plug#begin()
+Plug 'voldikss/vim-floaterm',
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'tami5/lspsaga.nvim',
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-treesitter/playground'
 "Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'

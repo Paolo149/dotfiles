@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # What modules, in what order
-MODULES="weather wifi volume time date battery"
+MODULES="wifi volume time date battery"
 
 # Modules that require an active internet connection
 ONLINE_MODULES=""
