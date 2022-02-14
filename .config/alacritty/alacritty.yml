@@ -1,8 +1,9 @@
 font:
   normal:
-    family: Hack Nerd Font
+    family: DejaVu Sans Mono Nerd Font
     style: Regular
   size: 12.0
+
 
 colors:
   primary:
@@ -31,9 +32,9 @@ colors:
 
 window:
   #background opacity
-  opacity: 1 
+  opacity: 0.95 
   title: hacking
 
 cursor:
   style:
-    blinking: On
+    blinking: Always

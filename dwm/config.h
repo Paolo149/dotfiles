@@ -80,15 +80,12 @@ static const char *dmenucmd[] = {"dmenu_run",    "-m",  dmenumon,  "-fn",
                                  col_whitegray,  "-sb", col_black, "-sf",
                                  col_whitegray2, NULL};
 static const char *termcmd[] = {"alacritty", NULL};
-static const char *upvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "+5%",
-                              NULL};
-static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-5%",
-                                NULL};
-static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0",
-                                "toggle", NULL};
+static const char *upvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL};
+static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL};
+static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL};
+static const char *mictoggle[] = {"/usr/bin/pactl", "set-source-mute", "0" "toggle", NULL};
 static const char *upbrightness[] = {"/usr/bin/xbacklight", "-inc", "1", NULL};
-static const char *downbrightness[] = {"/usr/bin/xbacklight", "-dec", "1",
-                                       NULL};
+static const char *downbrightness[] = {"/usr/bin/xbacklight", "-dec", "1", NULL};
 static const char *prtscrcmd[] = { "flameshot", "gui", NULL};
 
 static Key keys[] = {
@@ -126,6 +123,7 @@ static Key keys[] = {
     {0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol}},
     {0, XF86XK_MonBrightnessUp, spawn, {.v = upbrightness}},
     {0, XF86XK_MonBrightnessDown, spawn, {.v = downbrightness}},
+    {0, XF86XK_AudioMicMute, spawn, {.v = mictoggle}},
     {0, XK_Print, spawn, {.v = screenshot}},
     {MODKEY, XK_Print, spawn, {.v = prtscrcmd}},
 };

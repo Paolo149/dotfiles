@@ -40,6 +40,8 @@ fish_add_path -aP /home/paolo/.cargo/bin/
 
 # NodeJS
 set -gx PATH node_modules/.bin $PATH
+# Alsamixer settings load
+alsactl --file ~/.config/asound.state restore
 
 # Go
 set -g GOPATH $HOME/go
