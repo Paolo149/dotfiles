@@ -1,0 +1,28 @@
+playlist_display_mode = "classic"
+song_list_format = "$6{%a »$4 %t$/r$R}|{%f}"
+
+# Alternative with only song length right-aligned
+# song_list_format = "$6{%a »$4 %t $R$l}|{%f}"
+execute_on_song_change="~/.ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
+visualizer_look = "  "           
+visualizer_type = "ellipse"
+startup_screen = visualizer   
+startup_slave_screen = playlist  
+startup_slave_screen_focus = yes
+locked_screen_width_part = 30
+db_file "/home/paolo/.config/mpd/mpd.db"
+log_file "/home/paolo/.config/mpd/mpd.log"
+pid_file "/home/paolo/.config/mpd/mpd.pid"
+
+audio_output {
+        type "pulse"
+        name "pulse audio"
+}
+audio_output {
+    type                    "fifo"
+    name                    "my_fifo"
+    path                    "/tmp/mpd.fifo"
+    format                  "44100:16:2"
+    buffer_time             "50000"
+}
+
