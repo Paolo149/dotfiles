@@ -16,4 +16,5 @@ and [dwm](https://wiki.archlinux.org/title/Dwm) for my desktop environment.
 - [exa](https://github.com/ogham/exa) - is a modern replacement for the venerable file-listing command-line program ls that ships with Unix and Linux operating systems, giving it more features and better defaults.
 - [tide](https://github.com/IlanCosman/tide) - ultimate fish prompt.
 - [peco](https://github.com/peco/peco) - can be a great tool to filter stuff like logs, process stats, find files, because unlike grep, you can type as you think and look through the current results.
+- [emacs](https://www.gnu.org/software/emacs/) - Highly customizable, using Emacs Lisp code or a graphical interface. A wide range of functionality beyond text editing, including a project planner, mail and news reader, debugger interface, calendar, IRC client, and more. A packaging system for downloading and installing extensions. Built-in support for arbitrary-size integers.
 
