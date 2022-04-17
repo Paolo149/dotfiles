@@ -5,6 +5,8 @@
 (package-initialize)
 (package-refresh-contents)
 
+;; Disable Code Wrapping
+(set-default 'truncate-lines t)
 
 ;; Fix evil scroll up bug
 (setq evil-want-C-u-scroll t)
@@ -25,27 +27,101 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
+;; inferior lisp program
+(setq inferior-lisp-program "sbcl")
+
+;; ido mode!
+(setq ido-separator "\n")
+
+;; Change horizontal orientation to vertical
+(defun toggle-window-split ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+         (next-win-buffer (window-buffer (next-window)))
+         (this-win-edges (window-edges (selected-window)))
+         (next-win-edges (window-edges (next-window)))
+         (this-win-2nd (not (and (<= (car this-win-edges)
+                     (car next-win-edges))
+                     (<= (cadr this-win-edges)
+                     (cadr next-win-edges)))))
+         (splitter
+          (if (= (car this-win-edges)
+             (car (window-edges (next-window))))
+          'split-window-horizontally
+        'split-window-vertically)))
+    (delete-other-windows)
+    (let ((first-win (selected-window)))
+      (funcall splitter)
+      (if this-win-2nd (other-window 1))
+      (set-window-buffer (selected-window) this-win-buffer)
+      (set-window-buffer (next-window) next-win-buffer)
+      (select-window first-win)
+      (if this-win-2nd (other-window 1))))))
+
+(global-set-key (kbd "C-x |") 'toggle-window-split)
+
 ;;Load font
 (set-frame-font "DejaVu Sans Mono Nerd Font 22" nil t)
 
-;;;Smart Parens Mode
-					;(require 'smartparens-config)
+;; Enable Electric mode 
+(electric-pair-mode 1)
+
+;Smart Parens Mode
+;(require 'smartparens-config)
 ;;; Always start smartparens mode in scheme-mode.
-					;(add-hook 'scheme-mode-hook #'smartparens-mode)
+;(add-hook 'scheme-mode-hook #'smartparens-mode)
+
+;; Org mode keybindings
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+
+;; Org mode bullets!
+(require 'org-bullets)
+(add-hook 'org-mode-hook 'org-bullets-mode)
 
 ;; Download Evil
 (unless (package-installed-p 'evil)
   (package-install 'evil))
 
+;; doom-modeline! make it more cool :)
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
+;; This is a collection of Evil bindings for the parts of Emacs that Evil does not cover properly by default, such as help-mode, M-x calendar, Eshell and more.
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
+
 ;; Enable Evil
 (require 'evil)
 (evil-mode 1)
+
+;; Evil leader key! for more straigth forward shortcutkeys
+(evil-set-leader 'normal (kbd "SPC"))
+(evil-define-key 'normal 'global (kbd "<leader>ff") 'find-file)
+(evil-define-key 'normal 'global (kbd "<leader>bb") 'ido-switch-buffer)
+(evil-define-key 'normal 'global (kbd "<leader>ww") 'other-window)
+
 
 ;; Enable rainbow-delimeters
 (require 'rainbow-delimiters)
 ;; Start rainbow-delimeters in some modes
 (add-hook 'scheme-mode-hook 'rainbow-delimiters-mode)
 
+        
 ;; Enable TreeSitter
 (use-package tree-sitter
   :config
@@ -128,7 +204,7 @@
  '(custom-safe-themes
    '("79586dc4eb374231af28bbc36ba0880ed8e270249b07f814b0e6555bdcb71fab" "d14f3df28603e9517eb8fb7518b662d653b25b26e83bd8e129acea042b774298" default))
  '(package-selected-packages
-   '(aggressive-indent doom-themes tree-sitter-langs tree-sitter darcula-theme paredit rainbow-delimiters smartparens vertico gruvbox-theme evil)))
+   '(all-the-icons evil-leader evil-collection slime org-bullets orgit vterm aggressive-indent doom-themes tree-sitter-langs tree-sitter darcula-theme paredit rainbow-delimiters smartparens vertico gruvbox-theme evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -147,5 +223,3 @@
 ;; Load theme
 ;(load-theme 'gruvbox)
 ;(load-theme 'darcula)
-
-
