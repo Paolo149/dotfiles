@@ -1,3 +1,4 @@
+
 local status, lualine = pcall(require, "lualine")
 if (not status) then return end
 
@@ -40,9 +41,8 @@ lualine.setup {
   tabline = {},
   extensions = {'fugitive'}
 }
---- Eviline config for lualine
--- Author: shadmansaleh
--- Credit: glepnir
+-- --Eviline config for lualine
+-- --Author: shadmansaleh Credit: glepnir
 --local lualine = require('lualine')
 --
 ---- Color table for highlights
@@ -60,7 +60,7 @@ lualine.setup {
 --  blue     = '#51afef',
 --  red      = '#ec5f67',
 --}
---
+
 --local conditions = {
 --  buffer_not_empty = function()
 --    return vim.fn.empty(vim.fn.expand('%:t')) ~= 1

@@ -1,100 +1,20 @@
-(setq startup/gc-cons-threshold gc-cons-threshold)
-(setq gc-cons-threshold most-positive-fixnum)
-(defun startup/reset-gc () (setq gc-cons-threshold startup/gc-cons-threshold))
-(add-hook 'emacs-startup-hook 'startup/reset-gc)
-
-
-;;(package-initialize)
-;;(require 'package)
-;;(add-to-list 'package-archives
-;;             '("melpa" . "https://melpa.org/packages/") t)
-
-;;(use-package package
-;;  :init
-;;  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-;;  (package-initialize)
-;;  (package-refresh-contents))
-
-;; Disable Code Wrapping
-(set-default 'truncate-lines t)
-
-
-;; Prettify Lambda to be symbol
-(defun my-pretty-lambda ()
-  "make some word or string show as pretty Unicode symbols"
-  (setq prettify-symbols-alist
-        '(
-          ("lambda" . 955) ; λ
-          )))
-
-(add-hook 'scheme-mode-hook 'my-pretty-lambda)
-(global-prettify-symbols-mode 1)
-
-;; Disable UI tools
-(menu-bar-mode -1)
-(toggle-scroll-bar -1)
-(tool-bar-mode -1)
-
-;;(load "preview-latex.el" nil t t)
-
-;; inferior lisp program
-(setq inferior-lisp-program "sbcl")
-
-;; ido mode!
-(setq ido-separator "\n")
-
-;; Change horizontal orientation to vertical
-
-(defun toggle-window-split ()
-  (interactive)
-  (if (= (count-windows) 2)
-      (let* ((this-win-buffer (window-buffer))
-             (next-win-buffer (window-buffer (next-window)))
-             (this-win-edges (window-edges (selected-window)))
-             (next-win-edges (window-edges (next-window)))
-             (this-win-2nd (not (and (<= (car this-win-edges)
-					 (car next-win-edges))
-				     (<= (cadr this-win-edges)
-					 (cadr next-win-edges)))))
-             (splitter
-              (if (= (car this-win-edges)
-		     (car (window-edges (next-window))))
-		  'split-window-horizontally
-		'split-window-vertically)))
-	(delete-other-windows)
-	(let ((first-win (selected-window)))
-	  (funcall splitter)
-	  (if this-win-2nd (other-window 1))
-	  (set-window-buffer (selected-window) this-win-buffer)
-	  (set-window-buffer (next-window) next-win-buffer)
-	  (select-window first-win)
-	  (if this-win-2nd (other-window 1))))))
-
-(global-set-key (kbd "C-x |") 'toggle-window-split)
-
-;;Load font
-(set-frame-font "DejaVu Sans Mono Nerd Font 18" nil t)
-
-;; Enable Electric mode 
-(electric-pair-mode 1)
-(indent-relative nil)
-(set-default 'electric-indent-just-newline nil)
+(use-package package
+  :init
+  (package-initialize) 
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (package-refresh-contents))
 
 ;; Aggressive indent mode
-;;(use-package aggressive-indent
-;;  :init
-;;  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-;;  (add-hook 'scheme-mode-hook #'aggressive-indent-mode))
+(use-package aggressive-indent
+  :init
+  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+  (add-hook 'scheme-mode-hook #'aggressive-indent-mode))
 
 
 ;; Smart Parens Mode
 ;; (require 'smartparens-config)
 ;; Always start smartparens mode in scheme-mode.
 ;; (add-hook 'scheme-mode-hook #'smartparens-mode)
-
-;; Magit
-(use-package magit
-  :
 
 ;; Org mode keybindings
 (use-package org
@@ -112,9 +32,9 @@
   (package-install 'evil))
 
 ;; doom-modeline! make it more cool :)
-;;(use-package doom-modeline
-;;  :ensure t
-;;  :init (doom-modeline-mode 1))
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
 
 ;; This is a collection of Evil bindings for the parts of Emacs that Evil does not cover properly by default, such as help-mode, M-x calendar, Eshell and more.
 (use-package evil
@@ -137,8 +57,6 @@
 (evil-define-key 'normal 'global (kbd "<leader>ff") 'find-file)
 (evil-define-key 'normal 'global (kbd "<leader>bb") 'ido-switch-buffer)
 (evil-define-key 'normal 'global (kbd "<leader>ww") 'other-window)
-(evil-define-key 'normal 'global (kbd "<leader>df") 'delete-file)
-(evil-define-key 'normal 'global (kbd "<leader>dd") 'delete-directory)
 
 
 ;; Enable rainbow-delimeters
@@ -252,51 +170,4 @@
   (setq enable-recursive-minibuffers t))
 
 ;; Add hook to modes ParEdit
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-
-(tool-bar-mode -1)
-(setq frame-resize-pixelwise t)
-(dotimes (n 3)
-  (toggle-frame-maximized))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("79586dc4eb374231af28bbc36ba0880ed8e270249b07f814b0e6555bdcb71fab" "d14f3df28603e9517eb8fb7518b662d653b25b26e83bd8e129acea042b774298" default))
- '(package-selected-packages
-   '(magit geiser-mit pdf-tools auctex auto-package-update marginalia highlight-numbers rainbow-identifiers doom-modeline all-the-icons evil-leader evil-collection slime org-bullets orgit vterm aggressive-indent doom-themes tree-sitter-langs tree-sitter darcula-theme paredit rainbow-delimiters smartparens vertico gruvbox-theme evil)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(rainbow-delimiters-depth-1-face ((t (:foreground "dim gray"))))
- '(rainbow-delimiters-depth-2-face ((t (:foreground "dim gray"))))
- '(rainbow-delimiters-depth-3-face ((t (:foreground "dim gray"))))
- '(rainbow-delimiters-depth-4-face ((t (:foreground "dim gray"))))
- '(rainbow-delimiters-depth-5-face ((t (:foreground "dim gray"))))
- '(rainbow-delimiters-depth-6-face ((t (:foreground "dim gray"))))
- '(rainbow-delimiters-depth-7-face ((t (:foreground "dim gray"))))
- '(rainbow-delimiters-depth-8-face ((t (:foreground "dim gray"))))
- '(rainbow-delimiters-depth-9-face ((t (:foreground "dim gray")))))
-
-;; Load theme
-;;(load-theme 'gruvbox)
-;;(load-theme 'darcula)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(add-hook 'scheme-mode-hook #'enable-paredit-mode)

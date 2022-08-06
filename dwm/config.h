@@ -1,4 +1,3 @@
-/* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx = 2; /* border pixel of windows */
@@ -7,7 +6,7 @@ static const unsigned int snap = 32; /* snap pixel */
 static const int showbar = 1;        /* 0 means no bar */
 static const int topbar = 1;         /* 0 means bottom bar */
 static const char *fonts[] = {"Hack Nerd Font:size=13", "fontawesome:size=13"};
-static const char dmenufont[] = "Hack Nerd Font:size=14";
+static const char dmenufont[] = "Hack Nerd Font:size=15";
 static const char col_black2[] = "#32302f";
 static const char col_black[] = "#32302f";
 static const char col_whitegray[] = "#fbf1c7";
@@ -28,7 +27,8 @@ static const unsigned int alphas[][3]      = {
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 /* tagging */
-static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+static const char *tags[] = {"", "", "", "", "", "", "", "", ""};
+/*static const char *tags[] = {"一", "二", "三", "四", "五", "六", "七", "八", "九"};*/
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -71,7 +71,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *screenshot[] = {
-    "scrot", "/home/paolo/Pictures/Screenshots/%Y-%m-d%-%T-screenshot.jpg",
+    "scrot", "/home/paolo/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.jpg",
     NULL};
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */

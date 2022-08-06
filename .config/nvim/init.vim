@@ -14,7 +14,7 @@ scriptencoding utf-8
 " stop loading config if it's on tiny or small
 if !1 | finish | endif
 
-set guicursor=
+" set guicursor=
 set nocompatible
 set number
 set fileencodings=utf-8,sjis,euc-jp,latin
@@ -30,6 +30,7 @@ set laststatus=2
 set scrolloff=10
 set expandtab
 set relativenumber
+set incsearch
 "let loaded_matchparen = 1
 set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
@@ -54,8 +55,8 @@ set ignorecase
 set smarttab
 " indents
 filetype plugin indent on
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set ai "Auto indent
 set si "Smart indent
 set nowrap "No Wrap lines
@@ -96,7 +97,7 @@ if &term =~ "screen"
 endif
 
 "}}}
-
+  
 " File types "{{{
 " --------------------------------------------------------------------
 " JavaScript
@@ -110,13 +111,19 @@ au BufNewFile,BufRead *.mdx set filetype=markdown
 au BufNewFile,BufRead *.flow set filetype=javascript
 " Fish
 au BufNewFile,BufRead *.fish set filetype=fish
+" scheme
+au BufNewFile,BufRead *.scm set filetype=scheme
+
 
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
 autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
-
+autocmd Filetype python setlocal tabstop=4 shiftwidth=4
+autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4
+autocmd Filetype c setlocal tabstop=4 shiftwidth=4
+autocmd Filetype scheme setlocal tabstop=4 shiftwidth=4 nonumber norelativenumber
 "}}}
 
 " Imports "{{{
@@ -127,8 +134,9 @@ runtime ./maps.vim
 
 " Syntax theme "{{{
 " ---------------------------------------------------------------------
+" Status line
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 let g:Hexokinase_highlighters = [ 'backgroundfull' ]
-
 " All possible highlighters
 "let g:Hexokinase_highlighters = [
 "\   'virtual',
@@ -173,13 +181,16 @@ colorscheme gruvbox
 "autocmd vimenter * ++nested colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
 autocmd VimEnter * hi Normal ctermbg=none
+highlight clear SignColumn
 "}}}
 
 "  Extras "{{{
 " ---------------------------------------------------------------------
 set nohlsearch
 set exrc
+syntax match keyword "\<lambda\>" conceal cchar=λ
 "let g:deoplete#enable_at_startup = 1
 "}}}
 
 " vim: set foldmethod=marker foldlevel=0:
+  

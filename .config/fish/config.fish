@@ -21,6 +21,7 @@ alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "exa -l -g --icons"
 alias llt "ll --tree --level=2 -a"
+alias llta "ll --tree --level=3 -a"
 alias lla "ll -a"
 alias c "clear"
 alias g git
@@ -29,19 +30,20 @@ alias factorio "sh ~/Downloads/Torrents/Factorio/run.sh"
 alias matlab "sh ~/Downloads/Torrents/Matlab/bin/matlab -nodesktop"
 alias spelunky2 "cd ~/Downloads/Torrents/Spelunky2/ && ./start.sh"
 alias rpcs3 "cd ~/Downloads/Random/ && ./rpcs3-v0.0.19-13137-cb2748ae_linux64.AppImage"
+alias music "tmux new-session -- s && tmux source-file ~/.ncmpcpp/tsession"
+alias ncmpcpp "~/.ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"
 set -gx EDITOR nvim
 
 set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 
+export XDG_CONFIG_HOME="$HOME/.config"
 # Texlab
 fish_add_path -aP /home/paolo/.cargo/bin/
 
 # NodeJS
 set -gx PATH node_modules/.bin $PATH
-# Alsamixer settings load
-alsactl --file ~/.config/asound.state restore
 
 # Go
 set -g GOPATH $HOME/go
@@ -64,3 +66,5 @@ end
 
 # opam configuration
 source /home/paolo/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+# cli

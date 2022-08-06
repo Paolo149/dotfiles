@@ -11,7 +11,7 @@ SETUVAR Z_CMD:z
 SETUVAR Z_DATA:/home/paolo/\x2elocal/share/z/data
 SETUVAR Z_DATA_DIR:/home/paolo/\x2elocal/share/z
 SETUVAR Z_EXCLUDE:\x5e/home/paolo\x24
-SETUVAR __fish_initialized:3100
+SETUVAR __fish_initialized:3400
 SETUVAR _fisher_gazorby_2F_fish_2D_exa_files:/home/paolo/\x2econfig/fish/functions/exa_git\x2efish\x1e/home/paolo/\x2econfig/fish/conf\x2ed/fish\x2dexa\x2efish
 SETUVAR _fisher_jethrokuan_2F_z_files:/home/paolo/\x2econfig/fish/functions/__z\x2efish\x1e/home/paolo/\x2econfig/fish/functions/__z_add\x2efish\x1e/home/paolo/\x2econfig/fish/functions/__z_clean\x2efish\x1e/home/paolo/\x2econfig/fish/functions/__z_complete\x2efish\x1e/home/paolo/\x2econfig/fish/conf\x2ed/z\x2efish
 SETUVAR _fisher_plugins:gazorby/fish\x2dexa\x1esimnalamburt/shellder\x1ejethrokuan/z
@@ -109,8 +109,9 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_user_path:/home/paolo/\x2ecargo/bin/texlab
-SETUVAR fish_user_paths:/home/paolo/\x2ecargo/bin/texlab\x1e/home/paolo/\x2ecargo/bin/texlab
+SETUVAR fish_user_paths:/home/paolo/\x2ecargo/bin/texlab
 SETUVAR tide_chruby_bg_color:normal
 SETUVAR tide_chruby_color:B31209
 SETUVAR tide_cmd_duration_bg_color:normal

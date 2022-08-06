@@ -93,8 +93,7 @@
 ;; (add-hook 'scheme-mode-hook #'smartparens-mode)
 
 ;; Magit
-(use-package magit
-  :
+(use-package magit)
 
 ;; Org mode keybindings
 (use-package org
